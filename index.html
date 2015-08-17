@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script type="text/javascript">
+        var onDocumentReady = function () {
+            var input = document.getElementById('input');
+            var output = document.getElementById('output');
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                output.value = JSON.stringify(place, null, '  ');
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', onDocumentReady);
+    </script>
+</head>
+
+<body>
+    <div>Input: <input id="input" style="width: 640px; height: 40px;"></div>
+    <div>Output: <textarea id="output" style="width: 640px; height: 480px;"></textarea></div>
+</body>
+
+</html>
